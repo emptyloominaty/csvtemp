@@ -27,13 +27,12 @@ window.addEventListener('DOMContentLoaded', () => {
         if (!thermometers.hasOwnProperty(name)) {
             thermometers[name] = [parsecsv(files[i].content)];
         } else {
-
             thermometers[name].push(parsecsv(files[i].content));
         }
-        
     }
 
-
+    //TODO:
+    tempData = thermometers["Bed"][0]
 
   });
 });

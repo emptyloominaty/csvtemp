@@ -2,20 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
-    />
+    /> -->
     <title>Csvtemp</title>
   </head>
   <body>
-      <h1>CSV Files</h1>
+      <p id="tempAvg"></p>
+      <p id="tempMin"></p>
+      <p id="tempMax"></p>
+      <h1></h1>
       <div id="csv-output"></div>
-
-      <script src="renderer.js"></script>
+      <button onclick="getMinMaxAvg()" id="testButton">Test</button>
+      <script defer src="renderer.js"></script>
+      <script defer src="scripts/renderer/script.js"></script>
   </body>
 </html>

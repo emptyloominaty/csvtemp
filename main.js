@@ -4,6 +4,8 @@ const path = require('path')
 
 const { getCSVFiles } = require('./scripts/csvFileHandler')
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
 const createWindow = () => {
     const win = new BrowserWindow({
         width: 1600,
