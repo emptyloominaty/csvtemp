@@ -49,11 +49,17 @@ let setDevice = function (deviceName) {
     let date
     let month = 0
     let day = 0
+    chartData["temperature"] = []
+    chartData["time"] = []
+
     for (let i = 0; i < tempData.length; i++) {
-        let val = tempData[i][1]
+        let val = Number(tempData[i][1])
         date = tempData[i][0]
         month = String(date.getMonth() + 1).padStart(2, '0')
         day = String(date.getDate()).padStart(2, '0')
+
+        chartData["temperature"].push(val)
+        chartData["time"].push(month+"."+day+".")
 
         if ((day !== iDay && iDay !== 0) || i === tempData.length-1) {
             avgTemp = avgTemp/ii
@@ -73,7 +79,7 @@ let setDevice = function (deviceName) {
         iDay = day
         iMonth = month
  
-        avgTemp += Number(val)
+        avgTemp += val
         if (val > maxTemp) {
             maxTemp = val
         } else if (val < minTemp) {
@@ -83,4 +89,31 @@ let setDevice = function (deviceName) {
         
     }
     document.getElementById("output").innerHTML = html
+
+    chart.data.datasets[0].data = chartData.temperature
+    chart.data.labels = chartData.time
+    chart.data.datasets[0].borderColor = getTempGradient()
+    chart.update()
+}
+
+let getTempGradient = function () {
+    let filteredData = chartData.temperature.filter(value => value !== null && value !== 0);
+    let minValue = Math.min(...filteredData)
+    let maxValue = Math.max(...filteredData)
+    let range = maxValue - minValue
+
+    let gradient = document.getElementById("chart").getContext("2d").createLinearGradient(0, chart.chartArea.bottom, 0, chart.chartArea.top)
+
+    let blueStop = Math.max((18 - minValue) / range, 0)
+    let lightblueStop = Math.min(Math.max((20 - minValue) / range, blueStop), 1)
+    let greenStop = Math.min(Math.max((22 - minValue) / range, lightblueStop), 1)
+    let yellowStop = Math.min(Math.max((23 - minValue) / range, greenStop), 1)
+    let redStop = Math.min((maxValue - minValue) / range, 1)
+
+    gradient.addColorStop(blueStop, '#4284f5')
+    gradient.addColorStop(lightblueStop, '#42a4f5')
+    gradient.addColorStop(greenStop, 'green')
+    gradient.addColorStop(yellowStop, 'yellow')
+    gradient.addColorStop(redStop, 'red')
+    return gradient
 }

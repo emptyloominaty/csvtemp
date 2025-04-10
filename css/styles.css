@@ -1,3 +1,13 @@
+canvas, body, html {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    /*overflow: hidden;*/
+    user-select: none;
+}
+
 #header {
     display: flex;
     padding: 10px;
@@ -45,3 +55,5 @@
 .maxd {
     color: #eb5334;
 }
+
+
