@@ -1,7 +1,6 @@
 #header {
     display: flex;
     padding: 10px;
-    /*flex-direction: row;*/
 }
 
 #tempAvg, #tempMin, #tempMax {
@@ -13,6 +12,36 @@
     margin: 0 5px 0 5px;
 }
 
-#listDevices button {
+#listDevices button,h3 {
     margin: 0 5px 0 5px;
+}
+
+#output {
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.day {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    align-items: center;
+    border: 1px solid;
+    padding: 5px;
+    margin: 0 3px 0 3px;
+}
+.dayd {
+
+}
+.monthd {
+    color: #a8a8a8;
+}
+.avgd {
+    font-weight: bold;
+}
+.mind {
+    color: #3486eb;
+}
+.maxd {
+    color: #eb5334;
 }

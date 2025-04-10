@@ -31,18 +31,16 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //TODO:
-      tempData = thermometers["Bed"][0]
+      tempData = thermometers[Object.keys(thermometers)[0]][0]   
 
       let tempHTML = ""
-
+ 
       Object.keys(thermometers).forEach(key => {
-          tempHTML += "<button>"+key+""
+          tempHTML += `<button onclick="setDevice('${key}')">${key}</button>`
           tempHTML += "</button>"
       });
-
       document.getElementById("listDevices").innerHTML = tempHTML
 
-
+  
   });
 });
