@@ -22,17 +22,27 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i<files.length; i++) {
         let fileName = files[i].name
 
-        let name = fileName.split('_')[0];
+        let name = fileName.split('_')[0]
 
         if (!thermometers.hasOwnProperty(name)) {
-            thermometers[name] = [parsecsv(files[i].content)];
+            thermometers[name] = [parsecsv(files[i].content)]
         } else {
-            thermometers[name].push(parsecsv(files[i].content));
+            thermometers[name].push(parsecsv(files[i].content))
         }
     }
 
     //TODO:
-    tempData = thermometers["Bed"][0]
+      tempData = thermometers["Bed"][0]
+
+      let tempHTML = ""
+
+      Object.keys(thermometers).forEach(key => {
+          tempHTML += "<button>"+key+""
+          tempHTML += "</button>"
+      });
+
+      document.getElementById("listDevices").innerHTML = tempHTML
+
 
   });
 });

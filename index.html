@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8" />
     <!-- <meta
       http-equiv="Content-Security-Policy"
@@ -11,14 +11,26 @@
       content="default-src 'self'; script-src 'self'"
     /> -->
     <title>Csvtemp</title>
-  </head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
   <body>
-      <p id="tempAvg"></p>
-      <p id="tempMin"></p>
-      <p id="tempMax"></p>
-      <h1></h1>
-      <div id="csv-output"></div>
+      <div id="header">
+          <div>
+              <p id="tempAvg"></p>
+              <p id="tempMin"></p>
+              <p id="tempMax"></p>
+          </div>
+          <div>
+              <div id="listDevices"></div>
+          </div>
+      </div>
       <button onclick="getMinMaxAvg()" id="testButton">Test</button>
+
+      
+      <div id="output"></div>
+
+
+
       <script defer src="renderer.js"></script>
       <script defer src="scripts/renderer/script.js"></script>
   </body>
