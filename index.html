@@ -13,26 +13,34 @@
     <title>Csvtemp</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-  <body>
-      <div id="header">
-          <div>
-              <p id="tempAvg"></p>
-              <p id="tempMin"></p>
-              <p id="tempMax"></p>
-          </div>
-          <div>
-              <div>
-                  <h3 id="selectedDevice"></h3>
-              </div>
-              <div id="listDevices"></div>
-          </div>
-      </div>
-      
-      <div id="output"></div>
-      <div style="width: 95vw; height: 28vh; max-height: 28vh; margin:5px; padding:3px;" id="outputChart"><canvas id="chart"></canvas></div>
+<body>
+    <div id="header">
+        <div>
+            <div id="listDevices"></div>
+        </div>
+        <div>
+            <h3 id="selectedDevice"></h3>
+        </div>
+        <div>
+            <p id="tempAvg"></p>
+        </div>
+        <div>
+            <p id="tempMax"></p>
+        </div>
+        <div>
+            <p id="tempMin"></p>
+        </div>
+    </div>
 
-      <script defer src="scripts/libraries/chart.umd.min.js"></script>
-      <script defer src="renderer.js"></script>
-      <script defer src="scripts/renderer/script.js"></script>
-  </body>
+    <div id="output"></div>
+    <div style="width: 95vw; height: 28vh; max-height: 28vh; margin:5px; padding:3px;" id="outputChart"><canvas id="chart"></canvas></div>
+    <h3 id="ChartDTitle"></h3>
+    <div style="width: 45vw; height: 28vh; max-height: 28vh; margin:5px; padding:3px;" id="outputChartDay"><canvas id="chartDay"></canvas></div>
+
+    <script defer src="scripts/libraries/chart.umd.min.js"></script>
+    <script defer src="renderer.js"></script>
+    <script defer src="scripts/renderer/day.js"></script>
+    <script defer src="scripts/renderer/script.js"></script>
+
+</body>
 </html>

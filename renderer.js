@@ -7,6 +7,11 @@ let chartData = {
     "time": [1704704812, 1704704822, 1704704832, 1704704842, 1704704852, 1704704862, 1704704872, 1704704882, 1704704892, 1704704902, 1704704912, 1704704922, 1704704932, 1704704942, 1704704952, 1704704962, 1704704972]
 }
 
+let chartDataDay = {
+    "temperature": [27.8, 28.7, 29.6, 30.3, 27.4, 25.5, 22.6, 21.7, 20.9, 19.1, 20.0, 21.6, 21.3, 21.0, 22.3, 22.1, 22.9],
+    "time": [1704704812, 1704704822, 1704704832, 1704704842, 1704704852, 1704704862, 1704704872, 1704704882, 1704704892, 1704704902, 1704704912, 1704704922, 1704704932, 1704704942, 1704704952, 1704704962, 1704704972]
+}
+
 
 let parsecsv = function(data) {
     let array = data.split('\r\n')
@@ -67,15 +72,44 @@ window.addEventListener('DOMContentLoaded', () => {
               options: {
                   responsive: true,
                   maintainAspectRatio: false,
-                  pointStyle: false/*,
-                animation: {
-                    duration: 0
-                }*/
+                  pointStyle: false,
+                  plugins: {
+                      legend: {
+                          display: false
+                      }
+                  }
               }
           }
       )
 
-
+      chartDay = new Chart(
+          document.getElementById("chartDay"),
+          {
+              type: 'line',
+              data: {
+                  labels: chartDataDay.time,
+                  datasets: [
+                      {
+                          label: 'Temperature',
+                          data: chartDataDay.temperature,
+                          fill: false,
+                          borderColor: 'rgb(75, 192, 192)',
+                          tension: 0.1
+                      }
+                  ]
+              },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  pointStyle: false,
+                  plugins: {
+                      legend: {
+                          display: false
+                      }
+                  }
+              }
+          }
+      )
 
   
   });

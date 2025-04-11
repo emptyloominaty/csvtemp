@@ -63,7 +63,7 @@ let setDevice = function (deviceName) {
 
         if ((day !== iDay && iDay !== 0) || i === tempData.length-1) {
             avgTemp = avgTemp/ii
-            html += "<div class='day'>"
+            html += "<div onclick=\"setDay('" + day + "','" + month + "','2025')\" class='day'>";
             html += "<span class='monthd' >" + iMonth + "</span>"
             html += "<span class='dayd'>" + iDay + "</span>"
             html += "<hr width='100%'>"
@@ -92,17 +92,17 @@ let setDevice = function (deviceName) {
 
     chart.data.datasets[0].data = chartData.temperature
     chart.data.labels = chartData.time
-    chart.data.datasets[0].borderColor = getTempGradient()
+    chart.data.datasets[0].borderColor = getTempGradient(document.getElementById("chart"), chartData,chart)
     chart.update()
 }
 
-let getTempGradient = function () {
-    let filteredData = chartData.temperature.filter(value => value !== null && value !== 0);
+let getTempGradient = function (canvas, data, chart) {
+    let filteredData = data.temperature.filter(value => value !== null && value !== 0);
     let minValue = Math.min(...filteredData)
     let maxValue = Math.max(...filteredData)
     let range = maxValue - minValue
 
-    let gradient = document.getElementById("chart").getContext("2d").createLinearGradient(0, chart.chartArea.bottom, 0, chart.chartArea.top)
+    let gradient = canvas.getContext("2d").createLinearGradient(0, chart.chartArea.bottom, 0, chart.chartArea.top)
 
     let blueStop = Math.max((18 - minValue) / range, 0)
     let lightblueStop = Math.min(Math.max((20 - minValue) / range, blueStop), 1)
