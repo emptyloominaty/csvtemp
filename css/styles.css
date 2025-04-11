@@ -29,6 +29,8 @@ canvas, body, html {
 #output {
     display: flex;
     flex-wrap:wrap;
+    max-height: 250px;
+    overflow-y: scroll;
 }
 
 .day {
@@ -40,11 +42,18 @@ canvas, body, html {
     padding: 5px;
     margin: 0 3px 0 3px;
 }
-.dayd {
-
+.day:hover {
+    background-color: #e8e8e8;
 }
-.monthd {
+.active {
+    background-color: #e8e8f8;
+}
+.dayd {
+    font-size: 18px;
+}
+.monthd, .yeard {
     color: #a8a8a8;
+    font-size: 10px;
 }
 .avgd {
     font-weight: bold;

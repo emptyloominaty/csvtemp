@@ -42,19 +42,23 @@ let setDevice = function (deviceName) {
     let html = ""
     let iDay = 0
     let iMonth = 0
+    let iYear = 0
     let avgTemp = 0
     let ii = 0
     let minTemp = 100
     let maxTemp = 0
     let date
+    let year = 0
     let month = 0
     let day = 0
     chartData["temperature"] = []
     chartData["time"] = []
+    let id = 0
 
     for (let i = 0; i < tempData.length; i++) {
         let val = Number(tempData[i][1])
         date = tempData[i][0]
+        year = String(date.getFullYear())
         month = String(date.getMonth() + 1).padStart(2, '0')
         day = String(date.getDate()).padStart(2, '0')
 
@@ -63,8 +67,10 @@ let setDevice = function (deviceName) {
 
         if ((day !== iDay && iDay !== 0) || i === tempData.length-1) {
             avgTemp = avgTemp/ii
-            html += "<div onclick=\"setDay('" + day + "','" + month + "','2025')\" class='day'>";
-            html += "<span class='monthd' >" + iMonth + "</span>"
+            html += "<div onclick=\"setDay('" + iDay + "','" + iMonth + "','"+ iYear +"',"+id+")\" class='day' id='day"+id+"' >"
+            id++
+            html += "<div><span class='yeard' >" + iYear + "</span>."
+            html += "<span class='monthd' >" + iMonth + "</span></div>"
             html += "<span class='dayd'>" + iDay + "</span>"
             html += "<hr width='100%'>"
             html += "<span class='avgd'>" + Math.round(avgTemp * 10) / 10 + "</span>"
@@ -78,6 +84,7 @@ let setDevice = function (deviceName) {
         }
         iDay = day
         iMonth = month
+        iYear = year
  
         avgTemp += val
         if (val > maxTemp) {
