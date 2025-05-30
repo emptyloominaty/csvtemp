@@ -17,11 +17,11 @@ let parsecsv = function(data) {
     let array = data.split('\r\n')
     array = array.slice(3)
     let resultArray = array.map(row => {
-        let columns = row.split(',');
-        columns[0] = columns[0].replace(' ', 'T');
-        columns[0] = new Date(columns[0]);
+        let columns = row.split(',')
+        columns[0] = columns[0].replace(' ', 'T')
+        columns[0] = new Date(columns[0])
         return columns;
-    });
+    })
     return resultArray; 
 }
 
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
       Object.keys(thermometers).forEach(key => {
           tempHTML += `<button onclick="setDevice('${key}')">${key}</button>`
           tempHTML += "</button>"
-      });
+      })
       document.getElementById("listDevices").innerHTML = tempHTML
 
 
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
               },
               options: {
                   responsive: true,
-                  maintainAspectRatio: true,
+                  maintainAspectRatio: false,
                   pointStyle: false,
                   plugins: {
                       legend: {
@@ -112,5 +112,5 @@ window.addEventListener('DOMContentLoaded', () => {
       )
 
   
-  });
-});
+  })
+})
