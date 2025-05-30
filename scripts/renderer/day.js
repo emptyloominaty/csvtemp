@@ -50,7 +50,7 @@ let setDay = function (day, month, year, id) {
     chartDataDay["temperature"] = []
     chartDataDay["time"] = []
 
-    document.getElementById("ChartDTitle").textContent = year + "." + month + "." + day + ". "
+    document.getElementById("ChartDTitle").textContent = year + "." + month + "." + day + " "
 
     let baseDate = new Date(`${year}-${month}-${day}`)
     let rangeInDays = 1

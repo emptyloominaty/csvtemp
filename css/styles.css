@@ -1,9 +1,36 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --hoverDay-color: #e8e8e8;
+    --selectedDay-color: #e8e8f8;
+    --monthd-color: #a8a8a8;
+    --min-color: #3486eb;
+    --max-color: #eb5334;
+    --button-background-color: rgba (0,0,0,0.2);
+    --button-backgroundHover-color: rgba (0,0,0,0.4);
+    --button-color: #333333;
+    --button-border-color: rgba(0,0,0,0.2);
+}
+[data-theme="dark"] {
+    --bg-color: #333333;
+    --text-color: #E1E1E1;
+    --hoverDay-color: #555555;
+    --selectedDay-color: #555588;
+    --monthd-color: #a8a8a8;
+    --min-color: #3486eb;
+    --max-color: #eb5334;
+    --button-background-color: rgba (255,255,255,0.2);
+    --button-backgroundHover-color: rgba (255,255,255,0.4);
+    --button-color: #ffffff;
+    --button-border-color: rgba(255,255,255,0.2);
+}
+
+
 canvas, body, html {
     padding: 0;
     margin: 0;
-}
-canvas {
-    /*background: #333333;*/
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 * {
@@ -45,27 +72,44 @@ canvas {
     padding: 5px;
     margin: 0 3px 0 3px;
 }
+
 .day:hover {
-    background-color: #e8e8e8;
+    background-color: var(--hoverDay-color);
 }
 .active {
-    background-color: #e8e8f8;
+    background-color: var(--selectedDay-color);
 }
 .dayd {
     font-size: 18px;
 }
 .monthd, .yeard {
-    color: #a8a8a8;
+    color: var(--monthd-color);
     font-size: 10px;
 }
 .avgd {
     font-weight: bold;
 }
 .mind {
-    color: #3486eb;
+    color: var(--min-color);
+
 }
 .maxd {
-    color: #eb5334;
+    color: var(--max-color);
 }
 
+button {
+    background-color: var(--button-background-color);
+    padding: 2px 5px 2px 5px;
+    margin: 0 3px 0 3px;
+    border: 1px solid var(--button-border-color);
+    border-radius: 2px;
+    color: var(--button-color);
+}
 
+button:hover {
+    background-color: var(--button-backgroundHover-color);
+}
+
+button:focus {
+    outline: none;
+}
