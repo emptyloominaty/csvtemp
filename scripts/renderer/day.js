@@ -86,7 +86,7 @@ let setDay = function (day, month, year, id) {
             if (chart2Set === "week") {
                 chartDataDay["time"].push(tday+". "+thour + ":" + tmin)
             } else if (chart2Set === "month") {
-                chartDataDay["time"].push(tday + "." + tmonth + ". " + thour)
+                chartDataDay["time"].push(tday + "." + tmonth + ". ")
             } else if (chart2Set === "year") {
                 chartDataDay["time"].push(tday + "." + tmonth + ". ")
             } else {
