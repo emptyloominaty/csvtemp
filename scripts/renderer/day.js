@@ -72,9 +72,23 @@ let setDay = function (day, month, year, id) {
         if (date >= baseDate && date <= endDate) {
             let thour = String(date.getHours()).padStart(2, '0')
             let tmin = String(date.getMinutes()).padStart(2, '0')
+            let tday = String(date.getDate())
+            let tmonth = String(date.getMonth() + 1)
 
             chartDataDay["temperature"].push(val)
-            chartDataDay["time"].push(thour + ":" + tmin)
+
+            if (chart2Set === "week") {
+                chartDataDay["time"].push(tday+". "+thour + ":" + tmin)
+            } else if (chart2Set === "month") {
+                chartDataDay["time"].push(tday + "." + tmonth + ". " + thour)
+            } else if (chart2Set === "year") {
+                chartDataDay["time"].push(tday + "." + tmonth + ". ")
+            } else {
+                chartDataDay["time"].push(thour + ":" + tmin)
+            }
+            
+
+
         }
     }
 
