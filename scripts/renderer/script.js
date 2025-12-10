@@ -23,7 +23,7 @@ let getMinMaxAvg = function () {
 
     tempMax = Math.round(tempMax*10)/10
     tempMin = Math.round(tempMin*10)/10
-    tempAvg=Math.round(v/vi*10)/10
+    tempAvg = Math.round(v/vi*10)/10
 
     document.getElementById("tempMin").textContent = "Min:" + tempMin
     document.getElementById("tempMax").textContent = "Max:" + tempMax
@@ -56,7 +56,31 @@ let setDevice = function (deviceName) {
     let id = 0
 
     for (let i = 0; i < tempData.length; i++) {
-        let val = Number(tempData[i][1])
+
+        //--------------------------------
+        if (i + 1 < tempData.length) {
+            if (tempData[i + 1][0] > addMinutes(tempData[i][0], 30)) {
+                let end = tempData[i + 1][0]
+                let start = tempData[i][0]
+
+                let diffMs = end - start
+                let intervalMs = 15 * 60 * 1000
+                let intervals = diffMs / intervalMs
+
+                for (let a = 0; a < intervals; a++) {
+                    let b = a + 1
+                    tempData.splice(i + b, 0, [addMinutes(start, 15 * b),null])
+                }
+            }
+        }
+
+        //--------------------------------
+        let val
+        if (tempData[i][1] === null) {
+            val = null
+        } else {
+            val = Number(tempData[i][1])
+        }
         date = tempData[i][0]
         year = String(date.getFullYear())
         month = String(date.getMonth() + 1).padStart(2, '0')
@@ -123,4 +147,8 @@ let getTempGradient = function (canvas, data, chart) {
     gradient.addColorStop(yellowStop, 'yellow')
     gradient.addColorStop(redStop, 'red')
     return gradient
+}
+
+let addMinutes = function (date, minutes) {
+    return new Date(date.getTime() + minutes * 60000);
 }

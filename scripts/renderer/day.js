@@ -66,7 +66,13 @@ let setDay = function (day, month, year, id) {
     endDate.setDate(endDate.getDate() + rangeInDays)
 
     for (let i = 0; i < tempData.length; i++) {
-        let val = Number(tempData[i][1])
+        let val
+        if (tempData[i][1] === null) {
+            val = null
+        } else {
+            val = Number(tempData[i][1])
+        }
+
         let date = tempData[i][0]
 
         if (date >= baseDate && date <= endDate) {
